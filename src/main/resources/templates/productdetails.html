@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Store</title>
+<style>
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.container {
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+}
+</style>
+</head>
+<body>
+
+	<h2>Product Details</h2>
+
+	<div class="container">
+		<img th:src="@{${'/product/display/' + id}}"
+			style="width: 300px; height: 300px" />
+
+		<div>
+			<h3 th:text="${name}"></h3>
+
+			<p th:text="${description}"></p>
+
+			Manufacturer : <span th:text="${manufacturer}"></span> <br>
+			Category : <span th:text="${category}"></span> <br> Available
+			units in stock : <span th:text="${instock}"></span> <br>
+
+			<p th:text="${price}+'USD'"></p>
+
+			<div>
+				<a class="button" href="/product/show">Go Back</a> &emsp;
+				<a class="button" href="/">Go Home</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

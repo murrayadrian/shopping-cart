@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Store</title>
+<style>
+table, td, th {
+	border: 1px solid #ddd;
+}
+
+table {
+	border-collapse: collapse;
+	width: 80%;
+}
+
+th, td {
+	padding: 15px;
+}
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th>Name</th>
+				<th>Image</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>In Stock</th>
+				<th>Created date</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		
+			<tr th:each = "product, state : ${products}">
+			
+				<td th:text = "${state.count}"></td>
+				
+				<td th:text = "${product.name}"></td>
+				
+				<td><img th:src = "@{${'/product/display/' + product.id}}" style="width:50px" alt=""/></td>
+				
+				<td th:text = "${product.description}"></td>
+				
+				<td th:text = "${product.price}"></td>
+				
+				<td th:text = "${product.instock}"></td>
+				
+				<td th:text = "${#dates.format({product.createDate},'dd-MM-yyyy')}"></td>
+				<td>
+					<div style="display:flex;justify-content:space-between;width:100%;">
+						<span style="margin-right:5px;">
+							<a class="button" style="background-color:blue" th:href="@{/product/productDetails(id = ${product.id})}">Details</a>
+						</span>
+					
+						<form th:action="@{/product/addToCart}" method="post">
+							<input type="hidden" th:value="${product.id}" name="id" />
+							<button class="button" type="submit">Order Now</button>
+						</form>
+					</div>		
+				</td>
+				
+			</tr>
+		</tbody>
+		
+	</table>
+
+</body>
+</html>

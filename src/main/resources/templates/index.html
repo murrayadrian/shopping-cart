@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Store</title>
+<style>
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+label{
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	
+	<form id="form" action="/product/saveProductDetails" enctype = "mutipart/form-data">
+		<label>Product Name</label><br>
+		<input type="text" name="name" id="name" required>
+		<br>
+		
+		<label>Unit Price</label><br>
+		<input type="text" name="price" id="price">
+		<br>
+		
+		<label>Units In Stock</label><br>
+		<input type="number" name="instock" id="instock" value=0>
+		<br>
+		
+		<label>Description</label><br>
+		<textarea maxlength="2000" rows="4" cols="50" name="description" id="description"></textarea>
+		<br>
+		
+		<label>Manufacturer</label><br>
+		<input type="text" name="manufacturer" id="manufacturer"></input>
+		<br>
+		
+		<label>Category</label><br>
+		<input type="text" name="category" id="category"></input>
+		<br>
+		
+		<label>Condition</label><br>
+		<span>New </span>		 <input type="radio" name="condition" value="New"></input>
+		<span>Old </span>		 <input type="radio" name="condition" value="Old"></input>
+		<span>Refurbished </span><input type="radio" name="condition" value="Refurbished"></input>
+		<br>
+		
+		<label>Image</label><br>
+		<input type="file" name="image" id="image">
+		<br><br>	
+		
+		<input class="button" type="button" value="Add product" id="submit">
+		<br><br>
+		
+		<a class="button" href="/product/show">Show All</a>
+		<br>
+		
+	</form>
+	<script src="/js/product.js"></script>
+</body>
+</html>
